@@ -9,21 +9,36 @@ class Node {
 
 // List decleration
 
-class DoublyLinkedList {
+class DLL {
   constructor() {
     this.head = null;
     this.tail = null;
+    this.size = 0;
   }
-
 
   //Methods
 
+  print() {
+    document.write("The Elements in the Doubly Linked List are :</br> ");
+    let current = this.head;
+    while (current) {
+       document.write(
+          `${current.previous?.value}   ${current.value}   ${current.next?.value} <==> `
+       );
+       current = current.next; 
+    }
+ }
+
   push(value) {
+    this.size++;
     const node = new Node(value);
+    // list is empty
     if (!this.head) {
       this.head = node;
       this.tail = node;
-    } else {
+    } else 
+    // if list is not empty
+    {
       this.tail.next = node;
       node.previous = this.tail;
       this.tail = node;
